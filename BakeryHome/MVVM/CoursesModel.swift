@@ -34,16 +34,19 @@ struct Fields: Codable {
     let locationName: String
     let locationLatitude: Double
     let title: String
+    let imageURL: String
     let level: Level
-    let endDate: Double
+    let endDate: Int
     let id, chefID, description: String
-    let startDate: Double
+    let startDate: Int
 
     enum CodingKeys: String, CodingKey {
         case locationLongitude = "location_longitude"
         case locationName = "location_name"
         case locationLatitude = "location_latitude"
-        case title, level
+        case title
+        case imageURL = "image_url"
+        case level
         case endDate = "end_date"
         case id
         case chefID = "chef_id"
@@ -57,3 +60,4 @@ enum Level: String, Codable {
     case beginner = "beginner"
     case intermediate = "intermediate"
 }
+
