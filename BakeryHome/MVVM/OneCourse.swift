@@ -108,5 +108,4 @@ struct OneCourse: View {
         )
     ))
     .padding(.horizontal, 30)
-  //  .background(Color(.systemGray))
 }

@@ -220,11 +220,13 @@ struct CourseDetailView: View {
                 Text("Level:")
                     .font(.system(size: 14, weight: .semibold, design: .rounded))
                 Text(course.fields.level.rawValue.capitalized)
-                    .font(.system(size: 14, weight: .regular, design: .rounded))
+                    .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.white)
-                    .padding(.vertical, 4)
                     .padding(.horizontal, 8)
-                    .background(RoundedRectangle(cornerRadius: 12).fill(levelColor(for: course.fields.level)))
+                    .padding(.vertical, 4)
+                    .background(RoundedRectangle(cornerRadius: 12)
+                    .fill(levelColor(for: course.fields.level))
+                    )
                 
                 Spacer()
                 
@@ -291,12 +293,18 @@ struct CourseDetailView: View {
     
     private func levelColor(for level: Level) -> Color {
         switch level {
-        case .beginner: return Color.green
-        case .intermediate: return Color.orange
-        case .advance: return Color.red
+        case .beginner:
+            return Color.brownn
+            
+        case .advance:
+            return Color.qolange
+            
+        case .intermediate:
+            return Color.cream
         }
     }
 }
+
 
 
 #Preview {
