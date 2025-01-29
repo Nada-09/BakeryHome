@@ -14,13 +14,19 @@ struct CourseListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.courses, id: \.id) { course in
-                OneCourse(course: course)
-                    .listRowSeparator(.hidden)
+                NavigationLink(destination: CourseDetailView(course: course)) {
+                    OneCourse(course: course)
+                        
+                }
+                .buttonStyle(.plain)
+                .listRowSeparator(.hidden)
             }
+            
             .listStyle(.plain)
             .navigationTitle("Courses")
             .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $searchTerm, prompt: "Search")
+            .navigationBarBackButtonHidden(true)
         
             .onAppear {
                 viewModel.fetchCourses()

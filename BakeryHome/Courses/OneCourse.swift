@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OneCourse: View {
-    var course: Record
+    var course: CourseRecord
     
     var body: some View {
         ZStack {
@@ -90,10 +90,10 @@ struct OneCourse: View {
 }
 
 #Preview {
-    OneCourse(course: Record(
+    OneCourse(course: CourseRecord(
         id: "rec1DauP3kw5Q76oo",
         createdTime: .the20250107T224048000Z,
-        fields: Fields(
+        fields: CourseFields(
             locationLongitude: -91.55456,
             locationName: "Ferriday",
             locationLatitude: 31.63017,

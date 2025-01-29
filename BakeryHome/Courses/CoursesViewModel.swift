@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class CourseViewModel: ObservableObject {
-    @Published var courses: [Record] = []
+    @Published var courses: [CourseRecord] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     
@@ -32,7 +32,7 @@ class CourseViewModel: ObservableObject {
         
         URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
-            .decode(type: Welcome.self, decoder: JSONDecoder())
+            .decode(type: CourseWelcome.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 self?.isLoading = false
@@ -44,12 +44,12 @@ class CourseViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] welcome in
                 // معالجة البيانات الجديدة من الحقول
-                self?.courses = welcome.records?.map { record in
-                    var updatedRecord = record
+                self?.courses = welcome.records.map { record in
+                    let updatedRecord = record
                     // إضافة عملية تحضير البيانات إذا لزم الأمر (مثل تحويل التاريخ)
                     // يمكنك استخدام `fields` الجديدة كما تشاء مثل: `fields.level`, `fields.locationName`
                     return updatedRecord
-                } ?? []
+                }
             }
             .store(in: &cancellables)
     }
