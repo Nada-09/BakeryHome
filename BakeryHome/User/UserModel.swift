@@ -7,9 +7,12 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct UserWelcome: Codable {
-    let records: [UserRecord]
+// MARK: - Unified Model
+struct UserResponse: Codable {
+    let records: [UserRecord]?
+    let id, createdTime: String?
+    let fields: UserFields?
+    let error: UserError?
 }
 
 // MARK: - Record
@@ -23,3 +26,9 @@ struct UserFields: Codable {
     let id: String?
     let name, email, password: String
 }
+
+// MARK: - Error
+struct UserError: Codable {
+    let type, message: String
+}
+
